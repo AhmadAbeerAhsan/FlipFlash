@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlipFlash.MainPage"
+             Padding="16">
+
+    <Grid RowDefinitions="auto, auto, auto, *, 48"
+          ColumnDefinitions="*, *"
+          RowSpacing="16" ColumnSpacing="16">
+
+        <Border Grid.Row="0" Grid.Column="0"
+                BackgroundColor="White"
+                StrokeThickness="1.4"
+                StrokeShape="RoundRectangle 8">
+            <Grid ColumnDefinitions="*, *" RowDefinitions="auto, *"
+                  Padding="8"
+                  HeightRequest="98">
+                <Image HeightRequest="40"
+                       HorizontalOptions="Start"
+                       VerticalOptions="End"
+                       Source="fire.png" />
+                <Label Grid.Column="1"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       Text="8"
+                       VerticalOptions="End"
+                       HorizontalOptions="End" />
+                <Label Grid.Row="1"
+                       Grid.ColumnSpan="2"
+                       FontSize="20"
+                       Text="Day streak"
+                       VerticalOptions="End" />
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="0" Grid.Column="1"
+                BackgroundColor="White"
+                StrokeShape="RoundRectangle 8"
+                StrokeThickness="1.4"
+                Stroke="#3d6dcc">
+            <Grid ColumnDefinitions="*, *" RowDefinitions="auto, *"
+                  Padding="8"
+                  HeightRequest="100">
+                <Image HeightRequest="40"
+                       HorizontalOptions="Start"
+                       VerticalOptions="End"
+                       Source="cards_flat.png" />
+                <Label Grid.Column="1"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       Text="8"
+                       VerticalOptions="End"
+                       HorizontalOptions="End" />
+                <Label Grid.Row="1"
+                       Grid.ColumnSpan="2"
+                       FontSize="20"
+                       Text="Todays flashcards"
+                       VerticalOptions="End" />     
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1" Grid.Column="0"
+                BackgroundColor="White"
+                StrokeShape="RoundRectangle 8"
+                StrokeThickness="1.4"
+                Stroke="OrangeRed">
+            <Grid ColumnDefinitions="*, *" RowDefinitions="auto, *"
+                  Padding="8"
+                  HeightRequest="98">
+                <Image HeightRequest="40"
+                       HorizontalOptions="Start"
+                       VerticalOptions="End"
+                       Source="calendar_today.png" />
+                <Label Grid.Column="1"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       Text="8"
+                       VerticalOptions="End"
+                       HorizontalOptions="End" />
+                <Label Grid.Row="1"
+                       Grid.ColumnSpan="2"
+                       FontSize="20"
+                       Text="Expires today"
+                       VerticalOptions="End" />
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1" Grid.Column="1"
+                BackgroundColor="White"
+                StrokeShape="RoundRectangle 8"
+                StrokeThickness="1.4"
+                Stroke="Red">
+            <Grid ColumnDefinitions="*, *" RowDefinitions="auto, *"
+                  Padding="8"
+                  HeightRequest="98">
+                <Image HeightRequest="40"
+                       HorizontalOptions="Start"
+                       VerticalOptions="End"
+                       Source="expire.png" />
+                <Label Grid.Column="1"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       Text="8"
+                       VerticalOptions="End"
+                       HorizontalOptions="End" />
+                <Label Grid.Row="1"
+                       Grid.ColumnSpan="2"
+                       FontSize="20"
+                       Text="Expired flashcards"
+                       VerticalOptions="End" />
+            </Grid>
+        </Border>
+
+        <Label Grid.Row="2" Grid.ColumnSpan="2" Margin="0,8,0,0" FontSize="24" 
+               Text="My Collection"/>
+
+        <ScrollView Grid.Row="3" Grid.ColumnSpan="2">
+            <StackLayout Spacing="8">
+                <Border
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 16"
+                    StrokeThickness="0">
+                    <Border.Shadow>
+                        <Shadow
+                            Opacity="0.2"
+                            Radius="4"
+                            Offset="0,4"/>
+                    </Border.Shadow>
+                    <Grid
+                        Padding="8"
+                        ColumnDefinitions="48, *, 48"
+                        RowDefinitions="24, 24"
+                        ColumnSpacing="8">
+                        <Border
+                            Grid.RowSpan="2"
+                            BackgroundColor="WhiteSmoke"
+                            StrokeThickness="0">
+                            <Image Source="cards.png"
+                                   HeightRequest="30"/>
+                        </Border>
+                        <Label
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            Text="Interactive Computer Graphics" />
+                        <Label 
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="3 Cards"
+                            TextColor="DarkGray" />
+                        <Label
+                            Grid.RowSpan="2"
+                            Grid.Column="2"
+                            Margin="0,0,8,0"
+                            FontSize="36"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            Text=">" />
+                    </Grid>
+                </Border>
+                <Border
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 16"
+                    StrokeThickness="0">    
+                    <Border.Shadow>
+                        <Shadow
+                            Opacity="0.2"
+                            Radius="4"
+                            Offset="0,4"/>
+                    </Border.Shadow>
+                    <Grid
+                        Padding="8"
+                        ColumnDefinitions="48, *, 48"
+                        RowDefinitions="24, 24"
+                        ColumnSpacing="8">
+                        <Border
+                            Grid.RowSpan="2"
+                            BackgroundColor="WhiteSmoke"
+                            StrokeThickness="0">
+                            <Image Source="cards.png"
+                               HeightRequest="30"/>
+                        </Border>
+                        <Label
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            Text="Scientific Visualization" />
+                        <Label 
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="3 Cards"
+                            TextColor="DarkGray" />
+                        <Label
+                            Grid.RowSpan="2"
+                            Grid.Column="2"
+                            Margin="0,0,8,0"
+                            FontSize="36"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            Text=">" />
+                    </Grid>
+                </Border>
+                <Border
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 16"
+                    StrokeThickness="0">
+                    <Border.Shadow>
+                        <Shadow
+                            Opacity="0.2"
+                            Radius="4"
+                            Offset="0,4"/>
+                    </Border.Shadow>
+                    <Grid
+                        Padding="8"
+                        ColumnDefinitions="48, *, 48"
+                        RowDefinitions="24, 24"
+                        ColumnSpacing="8">
+                        <Border
+                            Grid.RowSpan="2"
+                            BackgroundColor="WhiteSmoke"
+                            StrokeThickness="0">
+                            <Image Source="cards.png"
+                               HeightRequest="30"/>
+                        </Border>
+                        <Label
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            Text="Highend Simulation in Practice" />
+                        <Label 
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="3 Cards"
+                            TextColor="DarkGray" />
+                        <Label
+                            Grid.RowSpan="2"
+                            Grid.Column="2"
+                            Margin="0,0,8,0"
+                            FontSize="36"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            Text=">" />
+                    </Grid>
+                </Border>
+                <Border
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 16"
+                    StrokeThickness="0">
+                    <Border.Shadow>
+                        <Shadow
+                            Opacity="0.2"
+                            Radius="4"
+                            Offset="0,4"/>
+                    </Border.Shadow>
+                    <Grid
+                        Padding="8"
+                        ColumnDefinitions="48, *, 48"
+                        RowDefinitions="24, 24"
+                        ColumnSpacing="8">
+                        <Border
+                            Grid.RowSpan="2"
+                            BackgroundColor="WhiteSmoke"
+                            StrokeThickness="0">
+                            <Image Source="cards.png"
+                               HeightRequest="30"/>
+                        </Border>
+                        <Label
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            Text="Computer Vision" />
+                        <Label 
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="3 Cards"
+                            TextColor="DarkGray" />
+                        <Label
+                            Grid.RowSpan="2"
+                            Grid.Column="2"
+                            Margin="0,0,8,0"
+                            FontSize="36"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            Text=">" />
+                    </Grid>
+                </Border>
+            </StackLayout>
+        </ScrollView>
+
+        <Button Grid.Row="4" Grid.Column="0" Text="Add Flashcard" BackgroundColor="#3d6dcc"/>
+        <Button Grid.Row="4" Grid.Column="1" Text="Add Collection"
+                BackgroundColor="White"
+                BorderWidth="1"
+                BorderColor="#3d6dcc"
+                TextColor="#3d6dcc"/>
+
+    </Grid>
+
+</ContentPage>

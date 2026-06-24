@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlipFlash.Card.CardEditerView"
+             xmlns:viewModels="clr-namespace:FlipFlash.Card"
+             x:DataType="viewModels:CardEditerViewModel"
+             xmlns:tabView="clr-namespace:Syncfusion.Maui.Toolkit.TabView;assembly=Syncfusion.Maui.Toolkit"
+             HideSoftInputOnTapped="True"
+             Title="CardEditer">
+
+        <Grid
+            RowDefinitions="auto, auto, *, *, *"
+            ColumnDefinitions="*, *"
+            RowSpacing="0"
+            ColumnSpacing="20"
+            Padding="20">
+            <Label
+                Text="DIFFICULTY"
+                VerticalOptions="End"
+                Margin="11,0,0,0"/>  
+            <Picker
+                Grid.Row="1"
+                Grid.Column="0"
+                ItemsSource="{Binding DifficultyLevels}"
+                SelectedIndex="0"
+                VerticalOptions="Start">
+            </Picker>
+
+            <Label
+                Grid.Column="1"
+                Text="COLLECTION"
+                VerticalOptions="Center"
+                Margin="11,0,0,0"/>
+            <Picker
+                Grid.Row="1"
+                Grid.Column="1"
+                ItemsSource="{Binding DifficultyLevels}"
+                SelectedIndex="0"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Start">  
+            </Picker>
+
+            <Border
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                StrokeThickness="2"
+                StrokeShape="RoundRectangle 8"
+                Margin="0,30,0,0"
+                        BackgroundColor="Beige"
+>
+                <Grid x:Name="Verti1"
+    RowDefinitions="auto,*"
+    ColumnDefinitions="*, *"
+    >
+                    <Label
+        Grid.Row="0" Grid.Column="0"
+        HorizontalOptions="Start"
+        Text="FRONT SIDE"
+                        Margin="10,0,0,0"/>
+                    <Label
+        Grid.Row="0" Grid.Column="1"
+        HorizontalOptions="End"
+        TextColor="Red"
+        Text="Question"
+                        Margin="0,0,10,0"/>
+                    <tabView:SfTabView
+        Grid.Row="1" Grid.ColumnSpan="2"
+        TabBarPlacement="Bottom"
+        IndicatorWidthMode="Stretch"
+        TabBarBackground="Pink"
+        IndicatorBackground="DeepPink"
+        TabBarHeight="35"
+        MinimumWidthRequest="{Binding Width, Source={x:Reference Verti1}}">
+                        <tabView:SfTabView.Items>
+                            <tabView:SfTabItem
+                ImageSource="text.png" ImageSize="20">
+                                <tabView:SfTabItem.Content>
+                                    <Editor
+                        Placeholder="Enter the question or term..."
+                        AutoSize="TextChanges"
+                        VerticalOptions="Fill">
+                                    </Editor>
+                                </tabView:SfTabItem.Content>
+                            </tabView:SfTabItem>
+                            <tabView:SfTabItem ImageSource="camera.png" ImageSize="20">
+                                <tabView:SfTabItem.Content>
+                                    <Editor
+                        MinimumWidthRequest="500"
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start">
+                                    </Editor>
+                                </tabView:SfTabItem.Content>
+                            </tabView:SfTabItem>
+                            <tabView:SfTabItem ImageSource="mic.png" ImageSize="20">
+                                <tabView:SfTabItem.Content>
+                                    <Editor
+                        MinimumWidthRequest="500"
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start">
+                                    </Editor>
+                                </tabView:SfTabItem.Content>
+                            </tabView:SfTabItem>
+                        </tabView:SfTabView.Items>
+                    </tabView:SfTabView>
+                </Grid>
+            </Border>
+
+            <Border
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                StrokeThickness="2"
+                StrokeShape="RoundRectangle 8"
+                Margin="0,30,0,0"
+                        BackgroundColor="Beige"
+>
+                <Grid x:Name="Verti2"
+    RowDefinitions="auto,*"
+    ColumnDefinitions="*, *"
+    >
+                    <Label
+        Grid.Row="0" Grid.Column="0"
+        HorizontalOptions="Start"
+        Text="BACK SIDE"
+                        Margin="10,0,0,0"/>
+                    <Label
+        Grid.Row="0" Grid.Column="1"
+        HorizontalOptions="End"
+        TextColor="Green"
+        Text="Answer"
+                        Margin="0,0,10,0"/>
+                    <tabView:SfTabView
+        Grid.Row="1" Grid.ColumnSpan="2"
+        TabBarPlacement="Bottom"
+        IndicatorWidthMode="Stretch"
+        TabBarBackground="Pink"
+        IndicatorBackground="DeepPink"
+        TabBarHeight="35"
+        MinimumWidthRequest="{Binding Width, Source={x:Reference Verti2}}">
+                        <tabView:SfTabView.Items>
+                            <tabView:SfTabItem
+                ImageSource="text.png" ImageSize="20">
+                                <tabView:SfTabItem.Content>
+                                    <Editor
+                        Placeholder="Enter the answer of definition..."
+                        AutoSize="TextChanges"
+                        VerticalOptions="Fill">
+                                    </Editor>
+                                </tabView:SfTabItem.Content>
+                            </tabView:SfTabItem>
+                            <tabView:SfTabItem ImageSource="camera.png" ImageSize="20">
+                                <tabView:SfTabItem.Content>
+                                    <Editor
+                        MinimumWidthRequest="500"
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start">
+                                    </Editor>
+                                </tabView:SfTabItem.Content>
+                            </tabView:SfTabItem>
+                            <tabView:SfTabItem ImageSource="mic.png" ImageSize="20">
+                                <tabView:SfTabItem.Content>
+                                    <Editor
+                        MinimumWidthRequest="500"
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start">
+                                    </Editor>
+                                </tabView:SfTabItem.Content>
+                            </tabView:SfTabItem>
+                        </tabView:SfTabView.Items>
+                    </tabView:SfTabView>
+                </Grid>
+            </Border>
+        </Grid>
+    
+</ContentPage>
