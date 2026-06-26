@@ -6,9 +6,9 @@ namespace FlipFlash.CardCollection
 {
     public class CardCollection
     {
-        string Id {  get; set; }
-        string Name { get; set; }
-        string ImagePath { get; set; }
-        List<string> CardsList { get; set; } 
+        public string Id {  get; set; }
+        public string Name { get; set; }
+        public string ImagePath { get; set; }
+        public List<string> CardsList { get; set; } 
     }
 }

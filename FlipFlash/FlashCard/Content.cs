@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FlipFlash.Card
+namespace FlipFlash.FlashCard
 {
     public class Content
     {
@@ -13,8 +13,8 @@ namespace FlipFlash.Card
             IxAudioPath
         }
         PrimaryContentType Primary {  get; set; }
-        string Text {  get; set; }
-        string ImagePath {  get; set; }
-        string AudioPath { get; set; }
+        public string Text {  get; set; }
+        public string ImagePath {  get; set; }
+        public string AudioPath { get; set; }
     }
 }

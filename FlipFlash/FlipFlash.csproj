@@ -73,13 +73,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Card\CardEditerView.xaml.cs">
-	    <DependentUpon>CardEditerView.xaml</DependentUpon>
+	  <Compile Update="FlashCard\FlashCardEditerView.xaml.cs">
+	    <DependentUpon>FlashCardEditerView.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Card\CardEditerView.xaml">
+	  <MauiXaml Update="FlashCard\FlashCardEditerView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

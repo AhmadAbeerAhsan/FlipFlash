@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using FlipFlash.FlashCard;
+using FlipFlash.Home;
+using FlipFlash.Services;
+using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.Toolkit.Hosting;
 
 namespace FlipFlash
@@ -45,7 +48,12 @@ namespace FlipFlash
          }
        });
 #endif
-
+            builder.Services.AddSingleton<ICardCollectionService, DummyCardCollectionService>();
+            builder.Services.AddSingleton<IFlashCardService, DummyFlashCardService>();
+            builder.Services.AddTransient<MainPageViewModel>();
+            builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<FlashCardEditerViewModel>();
+            builder.Services.AddTransient<FlashCardEditerView>();
             return builder.Build();
         }
     }
