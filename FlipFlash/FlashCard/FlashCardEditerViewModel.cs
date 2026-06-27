@@ -17,7 +17,7 @@ namespace FlipFlash.FlashCard
         private readonly IFlashCardService _flashCardService;
         public FlashCardEditerViewModel(IFlashCardService flashCardService)
         {
-            _difficultyLevels = new ObservableCollection<string>(
+            DifficultyLevels = new ObservableCollection<string>(
                 Enum.GetNames(typeof(DifficultyLevel))
             );
 

@@ -15,5 +15,21 @@ namespace FlipFlash.Home
             _cardCollectionService = cardCollectionService;
             _flashCardService = flashCardService;
         }
+
+        [ObservableProperty()]
+        public int _activeCardCount = 0;
+
+        [ObservableProperty()]
+        public int _expireSoonCardsCount = 0;
+
+        [ObservableProperty()]
+        public int _expiredCardCount = 0;
+
+        public async Task InitializeAsync()
+        {
+            ActiveCardCount = (await _flashCardService.GetExpiresSoonAsync()).Count();
+            ExpireSoonCardsCount = (await _flashCardService.GetExpiresTodayAsync()).Count();
+            ExpiredCardCount = (await _flashCardService.GetExpiredAsync()).Count();
+        }
     }
 }

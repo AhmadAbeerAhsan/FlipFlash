@@ -8,6 +8,5 @@ public partial class FlashCardEditerView : ContentPage
 		InitializeComponent();
 		BindingContext = _flashCardEditerViewModel = flashCardEditerViewModel;
 	}
-
     
 }
