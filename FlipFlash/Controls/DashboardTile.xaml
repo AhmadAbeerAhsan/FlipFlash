@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlipFlash.Controls.DashboardTile"
+             xmlns:controls="clr-namespace:FlipFlash.Controls">
+    <ContentView.ControlTemplate>
+        <ControlTemplate>
+            <Border
+                    x:DataType="controls:DashboardTile"
+                    BackgroundColor="{TemplateBinding TileBackground}"
+                    StrokeThickness="1.4"
+                    StrokeShape="RoundRectangle 8"
+                    Stroke="{TemplateBinding TileForeground}">
+                <Grid
+                        ColumnDefinitions="*, *" RowDefinitions="auto, *"
+                        Padding="8"
+                        HeightRequest="98"> 
+                    <Image 
+                            HeightRequest="40"
+                            HorizontalOptions="Start"
+                            VerticalOptions="End"
+                            Source="{TemplateBinding Icon}" />
+                    <Label
+                            Grid.Column="1"
+                            FontSize="20"
+                            FontAttributes="Bold"
+                            Text="{TemplateBinding Count}"
+                            TextColor="{TemplateBinding TileForeground}"
+                            VerticalOptions="End"
+                            HorizontalOptions="End" />
+                    <Label
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            FontSize="20"
+                            Text="{TemplateBinding Text}"
+                            TextColor="{TemplateBinding TileForeground}"
+                            VerticalOptions="End" />
+                </Grid>
+            </Border>
+        </ControlTemplate>
+    </ContentView.ControlTemplate>
+</ContentView>

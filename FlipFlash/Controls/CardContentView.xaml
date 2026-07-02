@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlipFlash.Controls.CardContentView"
+             xmlns:tabView="clr-namespace:Syncfusion.Maui.Toolkit.TabView;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:controls="clr-namespace:FlipFlash.Controls"
+             x:Name="CardContentTemplate">
+    <ContentView.ControlTemplate>
+        <ControlTemplate>
+
+            <Border x:DataType="controls:CardContentView"
+                    StrokeThickness="2"
+                    StrokeShape="RoundRectangle 8"
+                    Margin="0,30,0,0"
+                    BackgroundColor="Beige">
+                <Grid
+                        RowDefinitions="auto,*"
+                        ColumnDefinitions="*, *">
+                    <Label
+                            Grid.Row="0" Grid.Column="0"
+                            HorizontalOptions="Start"
+                            Text="{TemplateBinding TopLeftLabel}"
+                            TextColor="{TemplateBinding TopLeftLabelColor}"
+                            Margin="10,0,0,0"/>
+                    <Label
+                            Grid.Row="0" Grid.Column="1"
+                            HorizontalOptions="End"
+                            TextColor="{TemplateBinding TopRightLabelColor}"
+                            Text="{TemplateBinding TopRightLabel}"
+                            Margin="0,0,10,0"/>
+                    <tabView:SfTabView
+                            x:Name="MyTabView"
+                            Grid.Row="1" Grid.ColumnSpan="2"
+                            TabBarPlacement="Bottom"
+                            IndicatorWidthMode="Stretch"
+                            TabBarBackground="Pink"
+                            IndicatorBackground="DeepPink"
+                            TabBarHeight="35"
+                            MinimumWidthRequest="{Binding Width, Source={x:Reference CardContentTemplate}}">
+                        <tabView:SfTabView.Items>
+                            <tabView:SfTabItem
+                                    ImageSource="text.png" ImageSize="20">
+                                <tabView:SfTabItem.Content>
+                                    <Editor
+                                            Placeholder="Enter the question or term..."
+                                            AutoSize="TextChanges"
+                                            VerticalOptions="Fill"
+                                            Text="{TemplateBinding CardContent.Text}">
+                                    </Editor>
+                                </tabView:SfTabItem.Content>
+                            </tabView:SfTabItem>
+                            <tabView:SfTabItem ImageSource="camera.png" ImageSize="20">
+                                <tabView:SfTabItem.Content>
+                                    <Editor
+                                            MinimumWidthRequest="500"
+                                            AutoSize="TextChanges"
+                                            VerticalOptions="Start"
+                                            Text="{TemplateBinding CardContent.ImagePath}">
+                                    </Editor>
+                                </tabView:SfTabItem.Content>
+                            </tabView:SfTabItem>
+                            <tabView:SfTabItem ImageSource="mic.png" ImageSize="20">
+                                <tabView:SfTabItem.Content>
+                                    <Editor
+                                            MinimumWidthRequest="500"
+                                            AutoSize="TextChanges"
+                                            VerticalOptions="Start"
+                                            Text="{TemplateBinding CardContent.AudioPath}">
+                                    </Editor>
+                                </tabView:SfTabItem.Content>
+                            </tabView:SfTabItem>
+                        </tabView:SfTabView.Items>
+                    </tabView:SfTabView>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+    </ContentView.ControlTemplate>
+</ContentView>

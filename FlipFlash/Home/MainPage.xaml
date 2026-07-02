@@ -4,114 +4,44 @@
              x:Class="FlipFlash.Home.MainPage"
              xmlns:viewModels="clr-namespace:FlipFlash.Home"
              x:DataType="viewModels:MainPageViewModel"
-             Padding="16">
+             Padding="16"
+             xmlns:controls="clr-namespace:FlipFlash.Controls">
 
     <Grid RowDefinitions="auto, auto, auto, *, 48"
           ColumnDefinitions="*, *"
           RowSpacing="16" ColumnSpacing="16">
 
-        <Border Grid.Row="0" Grid.Column="0"
-                BackgroundColor="White"
-                StrokeThickness="1.4"
-                StrokeShape="RoundRectangle 8">
-            <Grid ColumnDefinitions="*, *" RowDefinitions="auto, *"
-                  Padding="8"
-                  HeightRequest="98">
-                <Image HeightRequest="40"
-                       HorizontalOptions="Start"
-                       VerticalOptions="End"
-                       Source="fire.png" />
-                <Label Grid.Column="1"
-                       FontSize="20"
-                       FontAttributes="Bold"
-                       Text="8"
-                       VerticalOptions="End"
-                       HorizontalOptions="End" />
-                <Label Grid.Row="1"
-                       Grid.ColumnSpan="2"
-                       FontSize="20"
-                       Text="Day streak"
-                       VerticalOptions="End" />
-            </Grid>
-        </Border>
+        <controls:DashboardTile
+            Grid.Row="0" Grid.Column="0"
+            Icon="fire.png"
+            Count="8"
+            Text="Day streak"
+            TileForeground="Black"
+            TileBackground="White"/>
 
-        <Border Grid.Row="0" Grid.Column="1"
-                BackgroundColor="White"
-                StrokeShape="RoundRectangle 8"
-                StrokeThickness="1.4"
-                Stroke="#3d6dcc">
-            <Grid ColumnDefinitions="*, *" RowDefinitions="auto, *"
-                  Padding="8"
-                  HeightRequest="100">
-                <Image HeightRequest="40"
-                       HorizontalOptions="Start"
-                       VerticalOptions="End"
-                       Source="cards_flat.png" />
-                <Label Grid.Column="1"
-                       FontSize="20"
-                       FontAttributes="Bold"
-                       Text="{Binding ActiveCardCount}"
-                       VerticalOptions="End"
-                       HorizontalOptions="End" />
-                <Label Grid.Row="1"
-                       Grid.ColumnSpan="2"
-                       FontSize="20"
-                       Text="Todays flashcards"
-                       VerticalOptions="End" />     
-            </Grid>
-        </Border>
+        <controls:DashboardTile
+            Grid.Row="0" Grid.Column="1"
+            Icon="cards_flat.png"
+            Count="{Binding ActiveCardCount}"
+            Text="Todays flashcards"
+            TileForeground="#3d6dcc"
+            TileBackground="White"/>
 
-        <Border Grid.Row="1" Grid.Column="0"
-                BackgroundColor="White"
-                StrokeShape="RoundRectangle 8"
-                StrokeThickness="1.4"
-                Stroke="OrangeRed">
-            <Grid ColumnDefinitions="*, *" RowDefinitions="auto, *"
-                  Padding="8"
-                  HeightRequest="98">
-                <Image HeightRequest="40"
-                       HorizontalOptions="Start"
-                       VerticalOptions="End"
-                       Source="calendar_today.png" />
-                <Label Grid.Column="1"
-                       FontSize="20"
-                       FontAttributes="Bold"
-                       Text="{Binding ExpireSoonCardsCount}"
-                       VerticalOptions="End"
-                       HorizontalOptions="End" />
-                <Label Grid.Row="1"
-                       Grid.ColumnSpan="2"
-                       FontSize="20"
-                       Text="Expires today"
-                       VerticalOptions="End" />
-            </Grid>
-        </Border>
+        <controls:DashboardTile
+            Grid.Row="1" Grid.Column="0"
+            Icon="calendar_today.png"
+            Count="{Binding ExpireSoonCardsCount}"
+            Text="Expiring today..."
+            TileForeground="OrangeRed"
+            TileBackground="White"/>
 
-        <Border Grid.Row="1" Grid.Column="1"
-                BackgroundColor="White"
-                StrokeShape="RoundRectangle 8"
-                StrokeThickness="1.4"
-                Stroke="Red">
-            <Grid ColumnDefinitions="*, *" RowDefinitions="auto, *"
-                  Padding="8"
-                  HeightRequest="98">
-                <Image HeightRequest="40"
-                       HorizontalOptions="Start"
-                       VerticalOptions="End"
-                       Source="expire.png" />
-                <Label Grid.Column="1"
-                       FontSize="20"
-                       FontAttributes="Bold"
-                       Text="{Binding ExpiredCardCount}"
-                       VerticalOptions="End"
-                       HorizontalOptions="End" />
-                <Label Grid.Row="1"
-                       Grid.ColumnSpan="2"
-                       FontSize="20"
-                       Text="Expired flashcards"
-                       VerticalOptions="End" />
-            </Grid>
-        </Border>
+        <controls:DashboardTile
+            Grid.Row="1" Grid.Column="1"
+            Icon="expire.png"
+            Count="{Binding ExpiredCardCount}"
+            Text="Expired Flashcards!"
+            TileForeground="DarkRed"
+            TileBackground="White"/>
 
         <Label Grid.Row="2" Grid.ColumnSpan="2" Margin="0,8,0,0" FontSize="24" 
                Text="My Collection"/>

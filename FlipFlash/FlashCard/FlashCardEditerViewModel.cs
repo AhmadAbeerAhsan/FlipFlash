@@ -15,6 +15,10 @@ namespace FlipFlash.FlashCard
         public ObservableCollection<string> _difficultyLevels = new ObservableCollection<string>();
         
         private readonly IFlashCardService _flashCardService;
+
+        [ObservableProperty()]
+        public Content _cardContent = new Content();
+
         public FlashCardEditerViewModel(IFlashCardService flashCardService)
         {
             DifficultyLevels = new ObservableCollection<string>(
@@ -22,6 +26,8 @@ namespace FlipFlash.FlashCard
             );
 
             _flashCardService = flashCardService;
+
+            _cardContent = new Content{ Text = "2 + 2" };
         }
     }
 }

@@ -6,10 +6,12 @@
              x:DataType="viewModels:FlashCardEditerViewModel"
              xmlns:tabView="clr-namespace:Syncfusion.Maui.Toolkit.TabView;assembly=Syncfusion.Maui.Toolkit"
              HideSoftInputOnTapped="True"
-             Title="CardEditer">
+             Title="CardEditer"
+             xmlns:controls="clr-namespace:FlipFlash.Controls">
 
-        <Grid
-            RowDefinitions="auto, auto, *, *, *"
+
+    <Grid
+            RowDefinitions="auto, auto, *, *, *, auto"
             ColumnDefinitions="*, *"
             RowSpacing="0"
             ColumnSpacing="20"
@@ -40,135 +42,32 @@
                 VerticalTextAlignment="Start">  
             </Picker>
 
-            <Border
-                Grid.Row="2"
-                Grid.ColumnSpan="2"
-                StrokeThickness="2"
-                StrokeShape="RoundRectangle 8"
-                Margin="0,30,0,0"
-                        BackgroundColor="Beige"
->
-                <Grid x:Name="Verti1"
-    RowDefinitions="auto,*"
-    ColumnDefinitions="*, *"
-    >
-                    <Label
-        Grid.Row="0" Grid.Column="0"
-        HorizontalOptions="Start"
-        Text="FRONT SIDE"
-                        Margin="10,0,0,0"/>
-                    <Label
-        Grid.Row="0" Grid.Column="1"
-        HorizontalOptions="End"
-        TextColor="Red"
-        Text="Question"
-                        Margin="0,0,10,0"/>
-                    <tabView:SfTabView
-        Grid.Row="1" Grid.ColumnSpan="2"
-        TabBarPlacement="Bottom"
-        IndicatorWidthMode="Stretch"
-        TabBarBackground="Pink"
-        IndicatorBackground="DeepPink"
-        TabBarHeight="35"
-        MinimumWidthRequest="{Binding Width, Source={x:Reference Verti1}}">
-                        <tabView:SfTabView.Items>
-                            <tabView:SfTabItem
-                ImageSource="text.png" ImageSize="20">
-                                <tabView:SfTabItem.Content>
-                                    <Editor
-                        Placeholder="Enter the question or term..."
-                        AutoSize="TextChanges"
-                        VerticalOptions="Fill">
-                                    </Editor>
-                                </tabView:SfTabItem.Content>
-                            </tabView:SfTabItem>
-                            <tabView:SfTabItem ImageSource="camera.png" ImageSize="20">
-                                <tabView:SfTabItem.Content>
-                                    <Editor
-                        MinimumWidthRequest="500"
-                        AutoSize="TextChanges"
-                        VerticalOptions="Start">
-                                    </Editor>
-                                </tabView:SfTabItem.Content>
-                            </tabView:SfTabItem>
-                            <tabView:SfTabItem ImageSource="mic.png" ImageSize="20">
-                                <tabView:SfTabItem.Content>
-                                    <Editor
-                        MinimumWidthRequest="500"
-                        AutoSize="TextChanges"
-                        VerticalOptions="Start">
-                                    </Editor>
-                                </tabView:SfTabItem.Content>
-                            </tabView:SfTabItem>
-                        </tabView:SfTabView.Items>
-                    </tabView:SfTabView>
-                </Grid>
-            </Border>
+        <controls:CardContentView
+            Grid.Row="2"
+            Grid.ColumnSpan="2"
+            CardContent="{Binding CardContent}"
+            Placeholder="Enter the question or term..."
+            TopLeftLabel="FRONT SIDE"
+            TopLeftLabelColor="Black"
+            TopRightLabel="Question"
+            TopRightLabelColor="Red"/>
 
-            <Border
-                Grid.Row="3"
-                Grid.ColumnSpan="2"
-                StrokeThickness="2"
-                StrokeShape="RoundRectangle 8"
-                Margin="0,30,0,0"
-                        BackgroundColor="Beige"
->
-                <Grid x:Name="Verti2"
-    RowDefinitions="auto,*"
-    ColumnDefinitions="*, *"
-    >
-                    <Label
-        Grid.Row="0" Grid.Column="0"
-        HorizontalOptions="Start"
-        Text="BACK SIDE"
-                        Margin="10,0,0,0"/>
-                    <Label
-        Grid.Row="0" Grid.Column="1"
-        HorizontalOptions="End"
-        TextColor="Green"
-        Text="Answer"
-                        Margin="0,0,10,0"/>
-                    <tabView:SfTabView
-        Grid.Row="1" Grid.ColumnSpan="2"
-        TabBarPlacement="Bottom"
-        IndicatorWidthMode="Stretch"
-        TabBarBackground="Pink"
-        IndicatorBackground="DeepPink"
-        TabBarHeight="35"
-        MinimumWidthRequest="{Binding Width, Source={x:Reference Verti2}}">
-                        <tabView:SfTabView.Items>
-                            <tabView:SfTabItem
-                ImageSource="text.png" ImageSize="20">
-                                <tabView:SfTabItem.Content>
-                                    <Editor
-                        Placeholder="Enter the answer of definition..."
-                        AutoSize="TextChanges"
-                        VerticalOptions="Fill">
-                                    </Editor>
-                                </tabView:SfTabItem.Content>
-                            </tabView:SfTabItem>
-                            <tabView:SfTabItem ImageSource="camera.png" ImageSize="20">
-                                <tabView:SfTabItem.Content>
-                                    <Editor
-                        MinimumWidthRequest="500"
-                        AutoSize="TextChanges"
-                        VerticalOptions="Start">
-                                    </Editor>
-                                </tabView:SfTabItem.Content>
-                            </tabView:SfTabItem>
-                            <tabView:SfTabItem ImageSource="mic.png" ImageSize="20">
-                                <tabView:SfTabItem.Content>
-                                    <Editor
-                        MinimumWidthRequest="500"
-                        AutoSize="TextChanges"
-                        VerticalOptions="Start">
-                                    </Editor>
-                                </tabView:SfTabItem.Content>
-                            </tabView:SfTabItem>
-                        </tabView:SfTabView.Items>
-                    </tabView:SfTabView>
-                </Grid>
-            </Border>
-        </Grid>
+        <controls:CardContentView
+            Grid.Row="3"
+            Grid.ColumnSpan="2"
+            CardContent="{Binding CardContent}"
+            Placeholder="Enter the answer of definition..."
+            TopLeftLabel="BACK SIDE"
+            TopLeftLabelColor="Black"
+            TopRightLabel="Answer"
+            TopRightLabelColor="Green"/>
+
+        <Button Grid.Row="5" Grid.Column="0" Text="Create/Save" BackgroundColor="#3d6dcc"/>
+        <Button Grid.Row="5" Grid.Column="1" Text="Discard"
+        BackgroundColor="White"
+        BorderWidth="1"
+        BorderColor="#3d6dcc"
+        TextColor="#3d6dcc"/>
+    </Grid>
     
 </ContentPage>
