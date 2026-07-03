@@ -12,13 +12,14 @@ public partial class CardContentView : ContentView
     public static readonly BindableProperty CardContentProperty =
         BindableProperty.Create(
             nameof(CardContent),
-            typeof(FlashCard.Content),
+            typeof(Models.CardContent),
             typeof(DashboardTile),
-            new FlashCard.Content { Text = string.Empty }
+            new Models.CardContent { Text = string.Empty }
         );
-    public FlashCard.Content CardContent
+
+    public Models.CardContent CardContent
     {
-        get => (FlashCard.Content)GetValue(CardContentProperty);
+        get => (Models.CardContent)GetValue(CardContentProperty);
         set => SetValue(CardContentProperty, value);
     }
 

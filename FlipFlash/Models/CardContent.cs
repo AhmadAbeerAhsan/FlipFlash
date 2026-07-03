@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FlipFlash.FlashCard
+namespace FlipFlash.Models
 {
-    public class Content
+    public class CardContent
     {
         enum PrimaryContentType
         {

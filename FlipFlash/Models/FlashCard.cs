@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FlipFlash.FlashCard
+namespace FlipFlash.Models
 {
     public class FlashCard
     {
@@ -14,8 +14,8 @@ namespace FlipFlash.FlashCard
             Hard
         }
         public string Id { get; set; }
-        public Content Question { get; set; }
-        public Content Answer { get; set; }
+        public CardContent Question { get; set; }
+        public CardContent Answer { get; set; }
         public DateTime ExpirationDate { get; set; }
         public DifficultyLevel DiffLevel { get; set; }
         public string CollectionId { get; set; }

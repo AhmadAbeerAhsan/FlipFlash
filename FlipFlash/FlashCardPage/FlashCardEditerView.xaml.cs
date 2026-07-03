@@ -1,4 +1,4 @@
-namespace FlipFlash.FlashCard;
+namespace FlipFlash.FlashCardPage;
 
 public partial class FlashCardEditerView : ContentPage
 {

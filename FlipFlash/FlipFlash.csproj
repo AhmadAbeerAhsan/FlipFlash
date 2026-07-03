@@ -73,7 +73,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="FlashCard\FlashCardEditerView.xaml.cs">
+	  <Compile Update="FlashCardPage\FlashCardEditerView.xaml.cs">
 	    <DependentUpon>FlashCardEditerView.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
@@ -85,9 +85,13 @@
 	  <MauiXaml Update="Controls\DashboardTile.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="FlashCard\FlashCardEditerView.xaml">
+	  <MauiXaml Update="FlashCardPage\FlashCardEditerView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="CardCollectionPage\" />
 	</ItemGroup>
 
 </Project>

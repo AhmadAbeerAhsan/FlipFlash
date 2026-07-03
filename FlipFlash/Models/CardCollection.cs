@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FlipFlash.CardCollection
+namespace FlipFlash.Models
 {
     public class CardCollection
     {

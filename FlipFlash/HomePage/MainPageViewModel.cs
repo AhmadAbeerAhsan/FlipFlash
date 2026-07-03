@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace FlipFlash.Home
+namespace FlipFlash.HomePage
 {
     public partial class MainPageViewModel : ObservableObject
     {

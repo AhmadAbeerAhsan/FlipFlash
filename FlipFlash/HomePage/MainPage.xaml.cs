@@ -1,4 +1,4 @@
-﻿namespace FlipFlash.Home
+﻿namespace FlipFlash.HomePage
 {
     public partial class MainPage : ContentPage
     {

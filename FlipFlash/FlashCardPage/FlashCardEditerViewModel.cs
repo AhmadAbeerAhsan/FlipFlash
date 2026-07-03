@@ -3,11 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
-using static FlipFlash.FlashCard.FlashCard;
+using static FlipFlash.Models.FlashCard;
 using CommunityToolkit.Mvvm.ComponentModel;
 using FlipFlash.Services;
+using FlipFlash.Models;
 
-namespace FlipFlash.FlashCard
+namespace FlipFlash.FlashCardPage
 {
     public partial class FlashCardEditerViewModel : ObservableObject
     {
@@ -17,7 +18,7 @@ namespace FlipFlash.FlashCard
         private readonly IFlashCardService _flashCardService;
 
         [ObservableProperty()]
-        public Content _cardContent = new Content();
+        public CardContent _cardContent = new CardContent();
 
         public FlashCardEditerViewModel(IFlashCardService flashCardService)
         {
@@ -27,7 +28,7 @@ namespace FlipFlash.FlashCard
 
             _flashCardService = flashCardService;
 
-            _cardContent = new Content{ Text = "2 + 2" };
+            _cardContent = new CardContent{ Text = "2 + 2" };
         }
     }
 }

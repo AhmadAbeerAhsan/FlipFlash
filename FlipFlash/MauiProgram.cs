@@ -1,5 +1,5 @@
-﻿using FlipFlash.FlashCard;
-using FlipFlash.Home;
+﻿using FlipFlash.FlashCardPage;
+using FlipFlash.HomePage;
 using FlipFlash.Services;
 using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.Toolkit.Hosting;
