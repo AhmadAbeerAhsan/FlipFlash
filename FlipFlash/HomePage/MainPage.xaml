@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FlipFlash.HomePage.MainPage"
              xmlns:viewModels="clr-namespace:FlipFlash.HomePage"
+             xmlns:modelsHelpers="clr-namespace:FlipFlash.Models.Helpers"
              x:DataType="viewModels:MainPageViewModel"
              Padding="16"
              xmlns:controls="clr-namespace:FlipFlash.Controls">
@@ -25,7 +26,8 @@
             Count="{Binding ActiveCardCount}"
             Text="Todays flashcards"
             TileForeground="#3d6dcc"
-            TileBackground="White"/>
+            TileBackground="White"
+            Command="{Binding NavigateToAllCardsCollectionViewCommand}"/>
 
         <controls:DashboardTile
             Grid.Row="1" Grid.Column="0"
@@ -47,175 +49,67 @@
                Text="My Collection"/>
 
         <ScrollView Grid.Row="3" Grid.ColumnSpan="2">
-            <StackLayout Spacing="8">
-                <Border
-                    BackgroundColor="White"
-                    StrokeShape="RoundRectangle 16"
-                    StrokeThickness="0">
-                    <Border.Shadow>
-                        <Shadow
-                            Opacity="0.2"
-                            Radius="4"
-                            Offset="0,4"/>
-                    </Border.Shadow>
-                    <Grid
-                        Padding="8"
-                        ColumnDefinitions="48, *, 48"
-                        RowDefinitions="24, 24"
-                        ColumnSpacing="8">
+            <VerticalStackLayout
+                BindableLayout.ItemsSource="{Binding CardCollections}"
+                Spacing="8">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="modelsHelpers:CardCollectionWithFlashCardCount">
                         <Border
-                            Grid.RowSpan="2"
-                            BackgroundColor="WhiteSmoke"
+                            BackgroundColor="White"
+                            StrokeShape="RoundRectangle 16"
                             StrokeThickness="0">
-                            <Image Source="cards.png"
-                                   HeightRequest="30"/>
+                            <Border.Shadow>
+                                <Shadow
+                                    Opacity="0.2"
+                                    Radius="4"
+                                    Offset="0,4"/>
+                            </Border.Shadow>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:MainPageViewModel}}, Path=NavigateToCardCollectionCommand}" 
+                                    CommandParameter="{Binding Id}" />
+                            </Border.GestureRecognizers>
+                            <Grid
+                                Padding="8"
+                                ColumnDefinitions="48, *, 48"
+                                RowDefinitions="24, 24"
+                                ColumnSpacing="8">
+                                <Border
+                                    Grid.RowSpan="2"
+                                    BackgroundColor="WhiteSmoke"
+                                    StrokeThickness="0">
+                                    <Image Source="{Binding ImagePath}"
+                                           HeightRequest="30"/>
+                                </Border>
+                                <Label
+                                    Grid.Column="1"
+                                    FontAttributes="Bold"
+                                    Text="{Binding Name}" />
+                                <Label 
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{Binding FlashCardCount, StringFormat='{0} Cards'}"
+                                    TextColor="DarkGray" />
+                                <Label
+                                    Grid.RowSpan="2"
+                                    Grid.Column="2"
+                                    Margin="0,0,8,0"
+                                    FontSize="36"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"
+                                    Text=">" />
+                            </Grid>
                         </Border>
-                        <Label
-                            Grid.Column="1"
-                            FontAttributes="Bold"
-                            Text="Interactive Computer Graphics" />
-                        <Label 
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            Text="3 Cards"
-                            TextColor="DarkGray" />
-                        <Label
-                            Grid.RowSpan="2"
-                            Grid.Column="2"
-                            Margin="0,0,8,0"
-                            FontSize="36"
-                            HorizontalOptions="End"
-                            VerticalOptions="Center"
-                            Text=">" />
-                    </Grid>
-                </Border>
-                <Border
-                    BackgroundColor="White"
-                    StrokeShape="RoundRectangle 16"
-                    StrokeThickness="0">    
-                    <Border.Shadow>
-                        <Shadow
-                            Opacity="0.2"
-                            Radius="4"
-                            Offset="0,4"/>
-                    </Border.Shadow>
-                    <Grid
-                        Padding="8"
-                        ColumnDefinitions="48, *, 48"
-                        RowDefinitions="24, 24"
-                        ColumnSpacing="8">
-                        <Border
-                            Grid.RowSpan="2"
-                            BackgroundColor="WhiteSmoke"
-                            StrokeThickness="0">
-                            <Image Source="cards.png"
-                               HeightRequest="30"/>
-                        </Border>
-                        <Label
-                            Grid.Column="1"
-                            FontAttributes="Bold"
-                            Text="Scientific Visualization" />
-                        <Label 
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            Text="3 Cards"
-                            TextColor="DarkGray" />
-                        <Label
-                            Grid.RowSpan="2"
-                            Grid.Column="2"
-                            Margin="0,0,8,0"
-                            FontSize="36"
-                            HorizontalOptions="End"
-                            VerticalOptions="Center"
-                            Text=">" />
-                    </Grid>
-                </Border>
-                <Border
-                    BackgroundColor="White"
-                    StrokeShape="RoundRectangle 16"
-                    StrokeThickness="0">
-                    <Border.Shadow>
-                        <Shadow
-                            Opacity="0.2"
-                            Radius="4"
-                            Offset="0,4"/>
-                    </Border.Shadow>
-                    <Grid
-                        Padding="8"
-                        ColumnDefinitions="48, *, 48"
-                        RowDefinitions="24, 24"
-                        ColumnSpacing="8">
-                        <Border
-                            Grid.RowSpan="2"
-                            BackgroundColor="WhiteSmoke"
-                            StrokeThickness="0">
-                            <Image Source="cards.png"
-                               HeightRequest="30"/>
-                        </Border>
-                        <Label
-                            Grid.Column="1"
-                            FontAttributes="Bold"
-                            Text="Highend Simulation in Practice" />
-                        <Label 
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            Text="3 Cards"
-                            TextColor="DarkGray" />
-                        <Label
-                            Grid.RowSpan="2"
-                            Grid.Column="2"
-                            Margin="0,0,8,0"
-                            FontSize="36"
-                            HorizontalOptions="End"
-                            VerticalOptions="Center"
-                            Text=">" />
-                    </Grid>
-                </Border>
-                <Border
-                    BackgroundColor="White"
-                    StrokeShape="RoundRectangle 16"
-                    StrokeThickness="0">
-                    <Border.Shadow>
-                        <Shadow
-                            Opacity="0.2"
-                            Radius="4"
-                            Offset="0,4"/>
-                    </Border.Shadow>
-                    <Grid
-                        Padding="8"
-                        ColumnDefinitions="48, *, 48"
-                        RowDefinitions="24, 24"
-                        ColumnSpacing="8">
-                        <Border
-                            Grid.RowSpan="2"
-                            BackgroundColor="WhiteSmoke"
-                            StrokeThickness="0">
-                            <Image Source="cards.png"
-                               HeightRequest="30"/>
-                        </Border>
-                        <Label
-                            Grid.Column="1"
-                            FontAttributes="Bold"
-                            Text="Computer Vision" />
-                        <Label 
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            Text="3 Cards"
-                            TextColor="DarkGray" />
-                        <Label
-                            Grid.RowSpan="2"
-                            Grid.Column="2"
-                            Margin="0,0,8,0"
-                            FontSize="36"
-                            HorizontalOptions="End"
-                            VerticalOptions="Center"
-                            Text=">" />
-                    </Grid>
-                </Border>
-            </StackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
         </ScrollView>
 
-        <Button Grid.Row="4" Grid.Column="0" Text="Add Flashcard" BackgroundColor="#3d6dcc"/>
+        <Button Grid.Row="4" 
+                Grid.Column="0" 
+                Text="Add Flashcard" 
+                BackgroundColor="#3d6dcc"
+                Command="{Binding NavigateToFlashCardEditorView}"/>
         <Button Grid.Row="4" Grid.Column="1" Text="Add Collection"
                 BackgroundColor="White"
                 BorderWidth="1"

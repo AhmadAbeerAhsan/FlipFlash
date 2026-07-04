@@ -24,7 +24,7 @@
                 Grid.Row="1"
                 Grid.Column="0"
                 ItemsSource="{Binding DifficultyLevels}"
-                SelectedIndex="0"
+                SelectedIndex="{Binding FlashCard.DiffLevel}"
                 VerticalOptions="Start">
             </Picker>
 
@@ -36,16 +36,16 @@
             <Picker
                 Grid.Row="1"
                 Grid.Column="1"
-                ItemsSource="{Binding DifficultyLevels}"
+                ItemsSource="{Binding CardCollections}"
+                ItemDisplayBinding="{Binding Name}"
                 SelectedIndex="0"
-                VerticalOptions="Center"
-                VerticalTextAlignment="Start">  
+                VerticalOptions="Center">  
             </Picker>
 
         <controls:CardContentView
             Grid.Row="2"
             Grid.ColumnSpan="2"
-            CardContent="{Binding CardContent}"
+            CardContent="{Binding FlashCard.Question}"
             Placeholder="Enter the question or term..."
             TopLeftLabel="FRONT SIDE"
             TopLeftLabelColor="Black"
@@ -55,14 +55,14 @@
         <controls:CardContentView
             Grid.Row="3"
             Grid.ColumnSpan="2"
-            CardContent="{Binding CardContent}"
+            CardContent="{Binding FlashCard.Answer}"
             Placeholder="Enter the answer of definition..."
             TopLeftLabel="BACK SIDE"
             TopLeftLabelColor="Black"
             TopRightLabel="Answer"
             TopRightLabelColor="Green"/>
 
-        <Button Grid.Row="5" Grid.Column="0" Text="Create/Save" BackgroundColor="#3d6dcc"/>
+        <Button Grid.Row="5" Grid.Column="0" Text="Create/Save" BackgroundColor="#3d6dcc" Clicked="OnSaveButtonClicked"/>
         <Button Grid.Row="5" Grid.Column="1" Text="Discard"
         BackgroundColor="White"
         BorderWidth="1"

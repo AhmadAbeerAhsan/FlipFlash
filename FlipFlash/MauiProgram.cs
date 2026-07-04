@@ -1,4 +1,6 @@
-﻿using FlipFlash.FlashCardPage;
+﻿using FlipFlash.AppSettingsPage;
+using FlipFlash.CardCollectionPage;
+using FlipFlash.FlashCardPage;
 using FlipFlash.HomePage;
 using FlipFlash.Services;
 using Microsoft.Extensions.Logging;
@@ -50,10 +52,17 @@ namespace FlipFlash
 #endif
             builder.Services.AddSingleton<ICardCollectionService, DummyCardCollectionService>();
             builder.Services.AddSingleton<IFlashCardService, DummyFlashCardService>();
+            builder.Services.AddSingleton<IAppSettingsService, DummyAppSettingsService>();
+            builder.Services.AddSingleton<INavigationService, NavigationService>();
             builder.Services.AddTransient<MainPageViewModel>();
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<FlashCardEditerViewModel>();
             builder.Services.AddTransient<FlashCardEditerView>();
+            builder.Services.AddTransient<AppSettingsViewModel>();
+            builder.Services.AddTransient<AppSettingsView>();
+            builder.Services.AddTransient<CardCollectionViewModel>();
+            builder.Services.AddTransient<CardCollectionView>();
+
             return builder.Build();
         }
     }

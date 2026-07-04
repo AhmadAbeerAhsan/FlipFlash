@@ -13,8 +13,13 @@ namespace FlipFlash.Models
             IxAudioPath
         }
         PrimaryContentType Primary {  get; set; }
-        public string Text {  get; set; }
-        public string ImagePath {  get; set; }
-        public string AudioPath { get; set; }
+        public string Text {  get; set; } = string.Empty;
+        public string ImagePath {  get; set; } = string.Empty;
+        public string AudioPath { get; set; } = string.Empty;
+
+        public bool isEmpty()
+        {
+            return string.IsNullOrWhiteSpace(Text) && string.IsNullOrWhiteSpace(ImagePath) && string.IsNullOrWhiteSpace(AudioPath);
+        }
     }
 }

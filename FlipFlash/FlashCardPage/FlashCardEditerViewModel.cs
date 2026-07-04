@@ -1,4 +1,5 @@
-﻿using Syncfusion.Maui.Toolkit.SegmentedControl;
+﻿
+using Syncfusion.Maui.Toolkit.SegmentedControl;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,24 +12,82 @@ using FlipFlash.Models;
 namespace FlipFlash.FlashCardPage
 {
     public partial class FlashCardEditerViewModel : ObservableObject
-    {
-        [ObservableProperty()]
-        public ObservableCollection<string> _difficultyLevels = new ObservableCollection<string>();
-        
+    {        
         private readonly IFlashCardService _flashCardService;
+        private readonly ICardCollectionService _cardCollectionService;
+        private readonly INavigationService _navigationService;
+
+        public ObservableCollection<string> DifficultyLevels { get; set; } = [];
+        public ObservableCollection<CardCollection> CardCollections { get; set; } = [];
 
         [ObservableProperty()]
-        public CardContent _cardContent = new CardContent();
+        public FlashCard _flashCard = new FlashCard();
 
-        public FlashCardEditerViewModel(IFlashCardService flashCardService)
+        [ObservableProperty()]
+        public CardCollection _selectedCardCollection;
+
+        [ObservableProperty()]
+        public string _id;
+
+        [ObservableProperty()]
+        public string _title;
+        public FlashCardEditerViewModel(IFlashCardService flashCardService, ICardCollectionService cardCollectionService, INavigationService navigationService)
         {
-            DifficultyLevels = new ObservableCollection<string>(
+            _flashCardService = flashCardService;
+            _cardCollectionService = cardCollectionService;
+            _navigationService = navigationService;
+        }
+
+        public async Task InitializeAsync(string? flashCardId  = null)
+        {
+            List<string> difficultyLevels = new List<string>(
                 Enum.GetNames(typeof(DifficultyLevel))
             );
+            foreach (var difficultyLevel in difficultyLevels)
+            {
+                DifficultyLevels.Add(difficultyLevel);
+            }
 
-            _flashCardService = flashCardService;
+            var cardcollections = await _cardCollectionService.GetAsync();
 
-            _cardContent = new CardContent{ Text = "2 + 2" };
+            // Die Liste der Kartenkollektionen aktualisieren
+            CardCollections.Clear();
+            foreach (var collection in cardcollections)
+            {
+                CardCollections.Add(collection);
+            }
+
+            if (!string.IsNullOrEmpty(flashCardId))
+            {
+                var flashCard = await _flashCardService.GetByIdAsync(flashCardId);
+                if (flashCard != null)
+                {
+                    FlashCard = flashCard;
+                    SelectedCardCollection = CardCollections.FirstOrDefault(x => x.Id == flashCard.CollectionId);
+                }
+            }
+            else
+            {
+                FlashCard = new FlashCard();
+                SelectedCardCollection = CardCollections.FirstOrDefault();
+            }
         }
-    }
+
+        public async Task SaveFlashCardAsync()
+        {
+            FlashCard.CollectionId = SelectedCardCollection?.Id ?? string.Empty;
+
+            if (FlashCard.CanSaveFlashCard())
+            {
+                await _flashCardService.SaveAsync(FlashCard);
+                await _navigationService.GoToAsync("..");
+            }
+            else
+            {
+                return; //Output error message to user that the flashcard cannot be saved
+            }
+        }
 }
+}
+
+

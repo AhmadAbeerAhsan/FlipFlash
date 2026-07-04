@@ -1,4 +1,5 @@
 ﻿using FlipFlash.Models;
+using FlipFlash.Models.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,8 +8,6 @@ namespace FlipFlash.Services
 {
     public class DummyCardCollectionService : ICardCollectionService
     {
-
-
         private readonly List<CardCollection> _collections = new()
         {
             new CardCollection
@@ -34,9 +33,33 @@ namespace FlipFlash.Services
             },
         };
 
+        private readonly IFlashCardService _flashCardService;
+
+        public DummyCardCollectionService(IFlashCardService flashCardService)
+        {
+            _flashCardService = flashCardService;
+        }
+
         public Task<IEnumerable<CardCollection>> GetAsync()
         {
             return Task.FromResult<IEnumerable<CardCollection>>(_collections);
+        }
+        public async Task<IEnumerable<CardCollectionWithFlashCardCount>> GetWithFlashCardCountAsync()
+        {
+            List<CardCollectionWithFlashCardCount> collectionsWithCount = new();
+            foreach (var collection in _collections)
+            {
+                var cards = await _flashCardService.GetByLocationAsync(collection.Id);
+                collectionsWithCount.Add(new CardCollectionWithFlashCardCount
+                {
+                    Id = collection.Id,
+                    Name = collection.Name,
+                    ImagePath = collection.ImagePath,
+                    CardsList = collection.CardsList,
+                    FlashCardCount = cards.Count()
+                });
+            }
+            return collectionsWithCount;
         }
         public Task<CardCollection?> GetByIdAsync(string id)
         {

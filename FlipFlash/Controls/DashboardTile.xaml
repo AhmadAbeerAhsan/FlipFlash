@@ -11,6 +11,10 @@
                     StrokeThickness="1.4"
                     StrokeShape="RoundRectangle 8"
                     Stroke="{TemplateBinding TileForeground}">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{TemplateBinding Command}"/>
+                </Border.GestureRecognizers>
                 <Grid
                         ColumnDefinitions="*, *" RowDefinitions="auto, *"
                         Padding="8"

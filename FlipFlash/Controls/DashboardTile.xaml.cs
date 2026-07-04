@@ -1,3 +1,5 @@
+using System.Windows.Input;
+
 namespace FlipFlash.Controls;
 
 public partial class DashboardTile : ContentView
@@ -67,5 +69,17 @@ public partial class DashboardTile : ContentView
     {
         get => (Color)GetValue(TileBackgroundProperty);
         set => SetValue(TileBackgroundProperty, value);
+    }
+
+    public static readonly BindableProperty CommandProperty =
+        BindableProperty.Create(
+            nameof(Command),
+            typeof(ICommand),
+            typeof(DashboardTile)
+        );
+    public ICommand Command
+    {
+        get => (ICommand)GetValue(CommandProperty);
+        set => SetValue(CommandProperty, value);
     }
 }

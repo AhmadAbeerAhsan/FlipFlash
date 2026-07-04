@@ -6,9 +6,9 @@ namespace FlipFlash.Models
 {
     public class CardCollection
     {
-        public string Id {  get; set; }
-        public string Name { get; set; }
-        public string ImagePath { get; set; }
-        public List<string> CardsList { get; set; } 
+        public string Id {  get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public string ImagePath { get; set; } = string.Empty;
+        public List<string> CardsList { get; set; }  = new List<string>();
     }
 }

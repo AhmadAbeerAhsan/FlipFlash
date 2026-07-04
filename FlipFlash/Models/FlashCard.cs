@@ -11,13 +11,19 @@ namespace FlipFlash.Models
             Easy,
             Normal,
             Medium,
-            Hard
+            Hard,
+            Unknown
         }
-        public string Id { get; set; }
-        public CardContent Question { get; set; }
-        public CardContent Answer { get; set; }
+        public string Id { get; set; } = string.Empty;
+        public CardContent Question { get; set; } = new CardContent();
+        public CardContent Answer { get; set; } = new CardContent();
         public DateTime ExpirationDate { get; set; }
-        public DifficultyLevel DiffLevel { get; set; }
-        public string CollectionId { get; set; }
+        public DifficultyLevel DiffLevel { get; set; } = DifficultyLevel.Unknown;
+        public string CollectionId { get; set; } = string.Empty;
+
+        public bool CanSaveFlashCard()
+        {
+            return !string.IsNullOrWhiteSpace(CollectionId) && !Question.isEmpty() && !Answer.isEmpty();
+        }
     }
 }

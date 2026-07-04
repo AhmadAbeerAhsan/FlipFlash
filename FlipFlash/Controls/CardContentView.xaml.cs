@@ -1,4 +1,5 @@
 using Syncfusion.Maui.Toolkit.TabView;
+using System.Windows.Input;
 
 namespace FlipFlash.Controls;
 
@@ -13,7 +14,7 @@ public partial class CardContentView : ContentView
         BindableProperty.Create(
             nameof(CardContent),
             typeof(Models.CardContent),
-            typeof(DashboardTile),
+            typeof(CardContentView),
             new Models.CardContent { Text = string.Empty }
         );
 
@@ -27,7 +28,7 @@ public partial class CardContentView : ContentView
         BindableProperty.Create(
             nameof(Placeholder),
             typeof(string),
-            typeof(DashboardTile)
+            typeof(CardContentView)
         );
     public string Placeholder
     {
@@ -39,7 +40,7 @@ public partial class CardContentView : ContentView
         BindableProperty.Create(
             nameof(TopLeftLabel),
             typeof(string),
-            typeof(DashboardTile),
+            typeof(CardContentView),
             string.Empty
         );
     public string TopLeftLabel
@@ -52,7 +53,7 @@ public partial class CardContentView : ContentView
         BindableProperty.Create(
             nameof(TopRightLabel),
             typeof(string),
-            typeof(DashboardTile),
+            typeof(CardContentView),
             string.Empty
         );
     public string TopRightLabel
@@ -65,7 +66,7 @@ public partial class CardContentView : ContentView
         BindableProperty.Create(
             nameof(TopLeftLabelColor),
             typeof(Color),
-            typeof(DashboardTile),
+            typeof(CardContentView),
             Colors.Black
         );
     public Color TopLeftLabelColor
@@ -78,7 +79,7 @@ public partial class CardContentView : ContentView
         BindableProperty.Create(
             nameof(TopRightLabelColor),
             typeof(Color),
-            typeof(DashboardTile),
+            typeof(CardContentView),
             Colors.Black
         );
     public Color TopRightLabelColor
@@ -86,5 +87,4 @@ public partial class CardContentView : ContentView
         get => (Color)GetValue(TopRightLabelColorProperty);
         set => SetValue(TopRightLabelColorProperty, value);
     }
-
 }

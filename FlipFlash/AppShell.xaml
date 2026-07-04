@@ -3,12 +3,34 @@
     x:Class="FlipFlash.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:FlipFlash.FlashCardPage"
-    Title="FlipFlash">
+    xmlns:homepage="clr-namespace:FlipFlash.HomePage"
+    xmlns:appsettingspage="clr-namespace:FlipFlash.AppSettingsPage"
+    x:DataType="appsettingspage:AppSettingsViewModel"
+    Title="FlipFlash"
+    Shell.FlyoutBehavior="Flyout">
 
+    <Shell.FlyoutHeader>
+        <Border
+            Margin="0"
+            Padding="24"
+            BackgroundColor="Beige"
+            StrokeThickness="0">
+            <VerticalStackLayout
+                Margin="10">
+                <Label
+                    FontSize="24"
+                    HorizontalOptions="Center"
+                    Text="{Binding FullName}"
+                    TextColor="Aquamarine"/>
+            </VerticalStackLayout>
+        </Border>
+    </Shell.FlyoutHeader>
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:FlashCardEditerView}"
-        Route="FlashCardEditerView" />
-
+        ContentTemplate="{DataTemplate homepage:MainPage}"
+        Route="MainPage" />
+    <ShellContent
+        Title="Settings"
+        ContentTemplate="{DataTemplate appsettingspage:AppSettingsView}"
+        Route="AppSettingsView" />
 </Shell>

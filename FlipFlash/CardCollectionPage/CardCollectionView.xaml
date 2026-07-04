@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlipFlash.CardCollectionPage.CardCollectionView"
+             xmlns:models="clr-namespace:FlipFlash.Models"
+             xmlns:viewmodels="clr-namespace:FlipFlash.CardCollectionPage"
+             xmlns:converters="clr-namespace:FlipFlash.Helpers"
+             Title="{Binding Title}"
+             Padding="16"
+             x:DataType="viewmodels:CardCollectionViewModel">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:DateToRelativeStringConvertor x:Key="DateToRelativeStringConvertor" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <CollectionView
+            ItemsSource="{Binding FlashCards}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:FlashCard">
+                    <Grid
+                        ColumnDefinitions="48, *, auto"
+                        ColumnSpacing="8"
+                        RowDefinitions="auto, auto, 16"
+                        RowSpacing="4">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{
+                                    Binding Source={RelativeSource 
+                                    AncestorType={x:Type viewmodels:CardCollectionViewModel}}, 
+                                    Path=NavigateToFlashCardEditorViewCommand
+                                }" 
+                                CommandParameter="{Binding .}" />
+                        </Grid.GestureRecognizers>
+                        <Border
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            BackgroundColor="#f5f7fa"
+                            StrokeShape="RoundRectangle 45"
+                            StrokeThickness="0">
+                            <Image
+                                Aspect="AspectFill"
+                                HeightRequest="48"
+                                Source="dotnet_bot.png"
+                                VerticalOptions="Center"
+                                WidthRequest="48" />
+                        </Border>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            Text="{Binding Question}"
+                            TextColor="#141f33" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding ExpirationDate, Converter={StaticResource DateToRelativeStringConvertor}}"
+                            TextColor="#141f33" />
+                        <Label
+                            Grid.RowSpan="2"
+                            Grid.Column="2"
+                            FontSize="24"
+                            Text="›"
+                            TextColor="#141f33"
+                            VerticalOptions="Center" />
+                        <Line
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            Stroke="#8792a8"
+                            StrokeThickness="1"
+                            X2="{Binding Width, Source={RelativeSource Self}}"
+                            Y1="4"
+                            Y2="4" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

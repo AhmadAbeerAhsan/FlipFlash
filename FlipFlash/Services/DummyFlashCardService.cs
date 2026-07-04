@@ -101,7 +101,7 @@ namespace FlipFlash.Services
 
         public Task<IEnumerable<Models.FlashCard>> GetByLocationAsync(string collectionId)
         {
-            var result = _cards.Where(c => c.CollectionId == collectionId);
+            IEnumerable<Models.FlashCard> result = _cards.Where(c => c.CollectionId == collectionId);
             return Task.FromResult<IEnumerable<Models.FlashCard>>(result);
         }
 
