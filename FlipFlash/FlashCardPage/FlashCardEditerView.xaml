@@ -7,7 +7,8 @@
              xmlns:tabView="clr-namespace:Syncfusion.Maui.Toolkit.TabView;assembly=Syncfusion.Maui.Toolkit"
              HideSoftInputOnTapped="True"
              Title="CardEditer"
-             xmlns:controls="clr-namespace:FlipFlash.Controls">
+             xmlns:controls="clr-namespace:FlipFlash.Controls"
+             xmlns:strings="clr-namespace:FlipFlash.Resources.strings">
 
 
     <Grid
@@ -17,7 +18,7 @@
             ColumnSpacing="20"
             Padding="20">
             <Label
-                Text="DIFFICULTY"
+                Text="{x:Static strings:AppResources.DIFFICULTY}"
                 VerticalOptions="End"
                 Margin="11,0,0,0"/>  
             <Picker
@@ -30,7 +31,7 @@
 
             <Label
                 Grid.Column="1"
-                Text="COLLECTION"
+                Text="{x:Static strings:AppResources.STACK}"
                 VerticalOptions="Center"
                 Margin="11,0,0,0"/>
             <Picker
@@ -43,27 +44,29 @@
             </Picker>
 
         <controls:CardContentView
+            x:Name="QuesiotnCard"
             Grid.Row="2"
             Grid.ColumnSpan="2"
             CardContent="{Binding FlashCard.Question}"
-            Placeholder="Enter the question or term..."
-            TopLeftLabel="FRONT SIDE"
+            Placeholder="{x:Static strings:AppResources.Enter_question_term}"
+            TopLeftLabel="{x:Static strings:AppResources.FRONT_SIDE}"
             TopLeftLabelColor="Black"
-            TopRightLabel="Question"
-            TopRightLabelColor="Red"/>
+            TopRightLabel="{x:Static strings:AppResources.Question}"
+            TopRightLabelColor="Red"
+            MinWidth="{Binding Width, Source={x:Reference QuesiotnCard}}"/>
 
         <controls:CardContentView
             Grid.Row="3"
             Grid.ColumnSpan="2"
             CardContent="{Binding FlashCard.Answer}"
-            Placeholder="Enter the answer of definition..."
-            TopLeftLabel="BACK SIDE"
+            Placeholder="{x:Static strings:AppResources.Enter_answer_definition}"
+            TopLeftLabel="{x:Static strings:AppResources.BACK_SIDE}"
             TopLeftLabelColor="Black"
-            TopRightLabel="Answer"
+            TopRightLabel="{x:Static strings:AppResources.Answer}"
             TopRightLabelColor="Green"/>
 
         <Button Grid.Row="5" Grid.Column="0" Text="Create/Save" BackgroundColor="#3d6dcc" Clicked="OnSaveButtonClicked"/>
-        <Button Grid.Row="5" Grid.Column="1" Text="Discard"
+        <Button Grid.Row="5" Grid.Column="1" Text="{x:Static strings:AppResources.Save}"
         BackgroundColor="White"
         BorderWidth="1"
         BorderColor="#3d6dcc"

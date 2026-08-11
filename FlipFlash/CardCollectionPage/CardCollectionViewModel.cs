@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using FlipFlash.Resources.strings;
 
 namespace FlipFlash.CardCollectionPage
 {
@@ -42,11 +43,11 @@ namespace FlipFlash.CardCollectionPage
                 case "Collection":
                     flashCards = await _flashCardService.GetByLocationAsync(collectionId);
                     var cardCollection = await _cardCollectionService.GetByIdAsync(collectionId);
-                    Title = cardCollection?.Name ?? "Unknown Collection";
+                    Title = cardCollection?.Name ?? AppResources.Unknown_Stack;
                     break;
                 default:
                     flashCards = await _flashCardService.GetAsync();
-                    Title = "All Flash Cards";
+                    Title = AppResources.All_Flash_Cards;
                     break;
             }
 

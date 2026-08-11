@@ -6,6 +6,7 @@
     xmlns:homepage="clr-namespace:FlipFlash.HomePage"
     xmlns:appsettingspage="clr-namespace:FlipFlash.AppSettingsPage"
     x:DataType="appsettingspage:AppSettingsViewModel"
+    xmlns:strings="clr-namespace:FlipFlash.Resources.strings"
     Title="FlipFlash"
     Shell.FlyoutBehavior="Flyout">
 
@@ -30,7 +31,7 @@
         ContentTemplate="{DataTemplate homepage:MainPage}"
         Route="MainPage" />
     <ShellContent
-        Title="Settings"
+        Title="{x:Static strings:AppResources.Settings}"
         ContentTemplate="{DataTemplate appsettingspage:AppSettingsView}"
         Route="AppSettingsView" />
 </Shell>

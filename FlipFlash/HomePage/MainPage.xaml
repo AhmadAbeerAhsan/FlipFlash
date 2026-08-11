@@ -6,7 +6,8 @@
              xmlns:modelsHelpers="clr-namespace:FlipFlash.Models.Helpers"
              x:DataType="viewModels:MainPageViewModel"
              Padding="16"
-             xmlns:controls="clr-namespace:FlipFlash.Controls">
+             xmlns:controls="clr-namespace:FlipFlash.Controls"
+             xmlns:strings="clr-namespace:FlipFlash.Resources.strings">
 
     <Grid RowDefinitions="auto, auto, auto, *, 48"
           ColumnDefinitions="*, *"
@@ -16,7 +17,7 @@
             Grid.Row="0" Grid.Column="0"
             Icon="fire.png"
             Count="8"
-            Text="Day streak"
+            Text="{x:Static strings:AppResources.Day_streak}"
             TileForeground="Black"
             TileBackground="White"/>
 
@@ -24,7 +25,7 @@
             Grid.Row="0" Grid.Column="1"
             Icon="cards_flat.png"
             Count="{Binding ActiveCardCount}"
-            Text="Todays flashcards"
+            Text="{x:Static strings:AppResources.Todays_flashcards}"
             TileForeground="#3d6dcc"
             TileBackground="White"
             Command="{Binding NavigateToAllCardsCollectionViewCommand}"/>
@@ -33,7 +34,7 @@
             Grid.Row="1" Grid.Column="0"
             Icon="calendar_today.png"
             Count="{Binding ExpireSoonCardsCount}"
-            Text="Expiring today..."
+            Text="{x:Static strings:AppResources.Expiring_today}"
             TileForeground="OrangeRed"
             TileBackground="White"/>
 
@@ -41,12 +42,12 @@
             Grid.Row="1" Grid.Column="1"
             Icon="expire.png"
             Count="{Binding ExpiredCardCount}"
-            Text="Expired Flashcards!"
+            Text="{x:Static strings:AppResources.Expired_flashcards}"
             TileForeground="DarkRed"
             TileBackground="White"/>
 
         <Label Grid.Row="2" Grid.ColumnSpan="2" Margin="0,8,0,0" FontSize="24" 
-               Text="My Collection"/>
+               Text="{x:Static strings:AppResources.My_Stacks}"/>
 
         <ScrollView Grid.Row="3" Grid.ColumnSpan="2">
             <VerticalStackLayout
@@ -102,15 +103,24 @@
                         </Border>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
+                <BindableLayout.EmptyViewTemplate>
+                    <DataTemplate>
+                        <Grid BackgroundColor="LightGray">
+                            <Button Text="{x:Static strings:AppResources.Add_Stack}"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.EmptyViewTemplate>
             </VerticalStackLayout>
         </ScrollView>
 
         <Button Grid.Row="4" 
                 Grid.Column="0" 
-                Text="Add Flashcard" 
+                Text="{x:Static strings:AppResources.Add_Flashcard}" 
                 BackgroundColor="#3d6dcc"
                 Command="{Binding NavigateToFlashCardEditorView}"/>
-        <Button Grid.Row="4" Grid.Column="1" Text="Add Collection"
+        <Button Grid.Row="4" Grid.Column="1" Text="{x:Static strings:AppResources.Add_Stack}"
                 BackgroundColor="White"
                 BorderWidth="1"
                 BorderColor="#3d6dcc"

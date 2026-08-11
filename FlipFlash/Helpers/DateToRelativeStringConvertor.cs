@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using FlipFlash.Resources.strings;
 
 namespace FlipFlash.Helpers
 {
@@ -21,16 +22,16 @@ namespace FlipFlash.Helpers
             // und zurückgeben
             return difference switch
             {
-                0 => "Heute",
-                1 => "Morgen",
-                -1 => "Gestern",
-                < -7 => string.Format("Vor {0} Tagen", Math.Abs(difference)),
-                < 0 => "Letzte Woche",
-                < 7 => string.Format("In {0} Tagen", difference),
-                < 14 => "Nächste Woche",
-                < 21 => "In zwei Wochen",
-                < 28 => "In drei Wochen",
-                _ => "In über einem Monat"
+                0 => AppResources.Today,
+                1 => AppResources.Tomorrow,
+                -1 => AppResources.Yesterday,
+                < -7 => string.Format(AppResources.X_Days_Ago, Math.Abs(difference)),
+                < 0 => AppResources.Last_Week,
+                < 7 => string.Format(AppResources.In_X_Days, difference),
+                < 14 => AppResources.Next_Week,
+                < 21 => AppResources.In_Two_Weeks,
+                < 28 => AppResources.In_Three_Weeks,
+                _ => AppResources.InMoreThanAMonth
             };
         }
         public object ConvertBack

@@ -10,27 +10,27 @@ namespace FlipFlash.Services
     {
         private readonly List<CardCollection> _collections = new()
         {
-            new CardCollection
-            {
-                Id        = "col-001",
-                Name      = "General Knowledge",
-                ImagePath = "images/collections/general_knowledge.png",
-                CardsList = new List<string> { "fc-001", "fc-002" }
-            },
-            new CardCollection
-            {
-                Id        = "col-002",
-                Name      = "Computer Science",
-                ImagePath = "images/collections/computer_science.png",
-                CardsList = new List<string> { "fc-003", "fc-004" }
-            },
-            new CardCollection
-            {
-                Id        = "col-003",
-                Name      = "Science & History",
-                ImagePath = "images/collections/science_history.png",
-                CardsList = new List<string> { "fc-005", "fc-006" }
-            },
+            //new CardCollection
+            //{
+            //    Id        = "col-001",
+            //    Name      = "General Knowledge",
+            //    ImagePath = "images/collections/general_knowledge.png",
+            //    CardsList = new List<string> { "fc-001", "fc-002" }
+            //},
+            //new CardCollection
+            //{
+            //    Id        = "col-002",
+            //    Name      = "Computer Science",
+            //    ImagePath = "images/collections/computer_science.png",
+            //    CardsList = new List<string> { "fc-003", "fc-004" }
+            //},
+            //new CardCollection
+            //{
+            //    Id        = "col-003",
+            //    Name      = "Science & History",
+            //    ImagePath = "images/collections/science_history.png",
+            //    CardsList = new List<string> { "fc-005", "fc-006" }
+            //},
         };
 
         private readonly IFlashCardService _flashCardService;

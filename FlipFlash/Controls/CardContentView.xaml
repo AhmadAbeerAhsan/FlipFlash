@@ -42,7 +42,7 @@
                                     ImageSource="text.png" ImageSize="20">
                                 <tabView:SfTabItem.Content>
                                     <Editor
-                                            Placeholder="Enter the question or term..."
+                                            Placeholder="{TemplateBinding Placeholder}"
                                             AutoSize="TextChanges"
                                             VerticalOptions="Fill"
                                             Text="{TemplateBinding CardContent.Text}">

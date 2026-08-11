@@ -87,4 +87,19 @@ public partial class CardContentView : ContentView
         get => (Color)GetValue(TopRightLabelColorProperty);
         set => SetValue(TopRightLabelColorProperty, value);
     }
+
+    public static readonly BindableProperty MinWidthProperty =
+        BindableProperty.Create(
+            nameof(MinWidth),
+            typeof(double),
+            typeof(CardContentView),
+            0.0
+        );
+    public double MinWidth
+    {
+        get => (double)GetValue(MinWidthProperty);
+        set => SetValue(MinWidthProperty, value);
+    }
+
+
 }
